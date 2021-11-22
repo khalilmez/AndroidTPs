@@ -11,7 +11,7 @@ class TaskListAdapter (private val taskList: List<Task>): RecyclerView.Adapter<T
 
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(task: Task) {
-            itemView.findViewById<TextView>(R.id.fragment_tasklist).text = "Title : " + task.title + "\n Description : " + task.description
+            itemView.findViewById<TextView>(R.id.task_title).text = "Titre : " + task.title + if (!task.description.isEmpty()) "\nDescription : " + task.description else ""
         }
     }
 

@@ -16,14 +16,16 @@ class TaskListFragment : Fragment(){
         Task(id = "id_3", title = "Task 3")
     )
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val recyclerView  = view.findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = TaskListAdapter(taskList)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val recyclerView  = view?.findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView?.layoutManager = LinearLayoutManager(activity)
-        recyclerView?.adapter = TaskListAdapter(taskList)
 
         return inflater.inflate(R.layout.fragment_task_list, container, false)
     }
