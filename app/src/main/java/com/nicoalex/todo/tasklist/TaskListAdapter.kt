@@ -7,12 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nicoalex.todo.R
 
-class TaskListAdapter (private val taskList: List<String>): RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
-
+class TaskListAdapter (private val taskList: List<Task>): RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
 
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(taskTitle: String) {
-            itemView.findViewById<TextView>(R.id.fragment_tasklist).text = taskTitle
+        fun bind(task: Task) {
+            itemView.findViewById<TextView>(R.id.fragment_tasklist).text = "Title : " + task.title + "\n Description : " + task.description
         }
     }
 
