@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.nicoalex.todo.R
 
-class TaskListAdapter (private val taskList: List<Task>): RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
+class TaskListAdapter (private var taskList: List<Task>): RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
 
     var onClickDelete: (Task) -> Unit = {}
     var onModifyTask: (Task) -> Unit = {}
@@ -41,6 +41,10 @@ class TaskListAdapter (private val taskList: List<Task>): RecyclerView.Adapter<T
 
     override fun getItemCount(): Int {
         return taskList.size
+    }
+
+    public fun setTaskList(newTaskList: List<Task>){
+        this.taskList = newTaskList
     }
 
 }

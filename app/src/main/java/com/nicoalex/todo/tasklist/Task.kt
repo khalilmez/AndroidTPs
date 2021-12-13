@@ -1,6 +1,16 @@
 package com.nicoalex.todo.tasklist
-import java.io.Serializable
 
-data class Task(val id: String, var title: String, var description: String = "") : Serializable {
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.*
+import kotlinx.serialization.json.*
 
-}
+@Serializable
+data class Task(
+    @SerialName("id")
+    val id: String,
+    @SerialName("title")
+    val title: String,
+    @SerialName("description")
+    val description: String = "This is a task!"
+) : java.io.Serializable
+{}
