@@ -7,15 +7,22 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nicoalex.todo.R
+import com.nicoalex.todo.databinding.ActivityFormBinding
+import com.nicoalex.todo.databinding.ItemTaskBinding
 
-class TaskListAdapter (private var taskList: List<Task>): RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
+class TaskListAdapter (/*private var taskList: List<Task>*/):
+    ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TaskDiffCallback) {
+
+    private lateinit var binding: ItemTaskBinding
 
     var onClickDelete: (Task) -> Unit = {}
     var onModifyTask: (Task) -> Unit = {}
 
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         val textViewTitle =itemView.findViewById<TextView>(R.id.task_title)
         fun bind(task: Task) {
             textViewTitle.text = "Titre : " + task.title + if (!task.description.isEmpty()) "\nDescription : " + task.description else ""
@@ -36,15 +43,15 @@ class TaskListAdapter (private var taskList: List<Task>): RecyclerView.Adapter<T
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        holder.bind(taskList[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int {
+   /* override fun getItemCount(): Int {
         return taskList.size
-    }
+    }*/
 
-    public fun setTaskList(newTaskList: List<Task>){
+  /*  public fun setTaskList(newTaskList: List<Task>){
         this.taskList = newTaskList
-    }
+    }*/
 
 }

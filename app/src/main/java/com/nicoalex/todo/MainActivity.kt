@@ -6,13 +6,23 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
+import coil.load
+import com.nicoalex.todo.databinding.ActivityMainBinding
 import com.nicoalex.todo.network.Api
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+    }
+
+    public fun getBinding () : ActivityMainBinding {
+        return binding
     }
 
     public fun getCurrentActivity() : Activity{
@@ -22,8 +32,9 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         lifecycleScope.launch {
+            binding.imageProfil.load("https://goo.gl/gEgYUd")
             val userInfo = Api.userWebService.getInfo().body()!!
-            findViewById<TextView>(R.id.Profile).text = "${userInfo.firstName} ${userInfo.lastName}"
+            binding.Profile.text = "${userInfo.firstName} ${userInfo.lastName}"
         }
     }
 }
