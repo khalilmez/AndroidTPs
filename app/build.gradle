@@ -67,4 +67,6 @@ dependencies {
     // Coil
     implementation("io.coil-kt:coil:1.4.0")
 
+    implementation "com.google.modernstorage:modernstorage-mediastore:1.0.+"
+
 }
