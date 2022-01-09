@@ -4,10 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import coil.load
+import com.nicoalex.todo.User.AuthenticationActivity
+import com.nicoalex.todo.User.SHARED_PREF_TOKEN_KEY
 import com.nicoalex.todo.User.UserInfoActivity
 import com.nicoalex.todo.databinding.ActivityMainBinding
 import com.nicoalex.todo.network.Api
@@ -18,29 +24,44 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         binding.modifyPicture.setOnClickListener{
             val intent = Intent(this, UserInfoActivity::class.java)
             startActivity(intent)
         }
+        binding.disconnect.setOnClickListener{
+            PreferenceManager.getDefaultSharedPreferences(Api.appContext).edit {
+                putString(SHARED_PREF_TOKEN_KEY, "")
+            }
+            val intent = Intent (this,AuthenticationActivity::class.java)
+            startActivity(intent)
+        }
         setContentView(view)
+
+        //setContentView(R.layout.activity_main)
     }
 
-    public fun getBinding () : ActivityMainBinding {
-        return binding
-    }
-
-    public fun getCurrentActivity() : Activity{
-        return this;
-    }
 
     override fun onResume() {
         super.onResume()
+
         lifecycleScope.launch {
-            val userInfo = Api.userWebService.getInfo().body()!!
-            binding.imageProfil.load(userInfo.avatar)
-            binding.Profile.text = "${userInfo.firstName} ${userInfo.lastName} \n ${userInfo.email}"
+
+            if(Api.userWebService.getInfo().isSuccessful){
+                val userInfo = Api.userWebService?.getInfo()?.body()!!
+                binding.Profile.text = "${userInfo.firstName} ${userInfo.lastName} \n ${userInfo.email}"
+
+                if(userInfo.avatar !=null){
+                    binding.imageProfil.load(userInfo.avatar){
+                        error(R.drawable.ic_launcher_background)
+                    }
+                }else{
+                    binding.imageProfil.load("https://goo.gl/gEgYUd")
+                }
+            }
         }
     }
+
 }

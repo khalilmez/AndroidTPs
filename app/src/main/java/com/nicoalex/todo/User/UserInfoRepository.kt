@@ -17,16 +17,16 @@ class UserInfoRepository {
     }
 
     suspend fun updateAvatar(avatar: MultipartBody.Part): UserInfo? {
-        var response = userWebService.updateAvatar(avatar);
+        var response = userWebService.updateAvatar(avatar)
         if(response.isSuccessful) {
-            return response.body();
+            return response.body()
         }
         return null;
     }
     suspend fun updateUserInfo(user: UserInfo): UserInfo? {
-        var response = userWebService.update(user);
+        var response = userWebService.update(user)
         if(response.isSuccessful) {
-            return response.body();
+            return response.body()
         }
         return null;
     }

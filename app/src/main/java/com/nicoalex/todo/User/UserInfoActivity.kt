@@ -81,6 +81,7 @@ class UserInfoActivity : AppCompatActivity() {
         }
 
     }
+
     private val cameraPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { accepted ->
             if (accepted) launchCamera()// lancer l'action souhaitée
@@ -133,7 +134,6 @@ class UserInfoActivity : AppCompatActivity() {
             ).getOrThrow()
             cameraLauncher.launch(photoUri)
         }
-
     }
 
     private fun convert(uri: Uri): MultipartBody.Part {
@@ -146,8 +146,7 @@ class UserInfoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
-        viewModel.refresh();
+        viewModel.refresh()
     }
 
 }

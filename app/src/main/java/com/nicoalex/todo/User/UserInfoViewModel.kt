@@ -9,37 +9,37 @@ import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 
 class UserInfoViewModel : ViewModel(){
-    private val repository = UserInfoRepository();
+    private val repository = UserInfoRepository()
 
-    private var _userInfo = MutableStateFlow<UserInfo?>(null);
-    var userInfo = _userInfo.asStateFlow() ;
+    private var _userInfo = MutableStateFlow<UserInfo?>(null)
+    var userInfo = _userInfo.asStateFlow()
 
     fun refresh() {
         viewModelScope.launch {
-            var data = repository.refresh();
+            var data = repository.refresh()
             if(data != null) {
-                _userInfo.value = data;
-                userInfo = _userInfo;
+                _userInfo.value = data
+                userInfo = _userInfo
             }
         }
     }
 
     fun updateAvatar(avatar: MultipartBody.Part) {
         viewModelScope.launch {
-            var data = repository.updateAvatar(avatar);
+            var data = repository.updateAvatar(avatar)
             if(data != null) {
-                _userInfo.value = data;
-                userInfo = _userInfo;
+                _userInfo.value = data
+                userInfo = _userInfo
             }
         }
     }
 
     fun updateUserInfo(user: UserInfo) {
         viewModelScope.launch {
-            var data = repository.updateUserInfo(user);
+            var data = repository.updateUserInfo(user)
             if(data != null) {
-                _userInfo.value = data;
-                userInfo = _userInfo;
+                _userInfo.value = data
+                userInfo = _userInfo
             }
         }
     }

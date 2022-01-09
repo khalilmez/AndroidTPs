@@ -1,7 +1,13 @@
 package com.nicoalex.todo.tasklist
 
+import android.content.Intent
+import android.preference.PreferenceManager
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.nicoalex.todo.User.AuthenticationActivity
+import com.nicoalex.todo.User.SHARED_PREF_TOKEN_KEY
+import com.nicoalex.todo.network.Api
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 

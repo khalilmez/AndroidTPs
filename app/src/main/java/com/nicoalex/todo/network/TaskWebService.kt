@@ -1,5 +1,7 @@
 package com.nicoalex.todo.network
 
+import com.nicoalex.todo.User.LoginForm
+import com.nicoalex.todo.User.LoginResponse
 import com.nicoalex.todo.tasklist.Task
 import retrofit2.Response
 import retrofit2.http.*
@@ -16,5 +18,4 @@ interface TasksWebService {
 
     @DELETE("tasks/{id}")
     suspend fun delete(@Path("id") id: String) : Response<Unit>
-
 }
