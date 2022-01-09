@@ -35,6 +35,5 @@
 ## You can update your profile
 
 <img src="https://user-images.githubusercontent.com/79865655/148699607-aa7b00fc-516e-4089-8646-46556050ac59.png" width="200"/>
-![Screenshot_1641757990]()
 
 
