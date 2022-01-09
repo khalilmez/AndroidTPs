@@ -33,6 +33,7 @@ class TaskListViewModel : ViewModel() {
             }
         }
     }
+
     fun addOrEdit(task: Task) {
         viewModelScope.launch {
             val oldTask = taskList.value.firstOrNull { it.id == task.id }

@@ -50,13 +50,16 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
 
             if(Api.userWebService.getInfo().isSuccessful){
-                val userInfo = Api.userWebService?.getInfo()?.body()!!
-                binding.Profile.text = "${userInfo.firstName} ${userInfo.lastName} \n ${userInfo.email}"
+                val userInfo = Api.userWebService?.getInfo()
+                if(userInfo!=null && userInfo.isSuccessful){
+                    binding.Profile.text = "${userInfo?.body()!!.firstName} ${userInfo?.body()!!.lastName} \n ${userInfo?.body()!!.email}"
 
-                if(userInfo.avatar !=null){
-                    binding.imageProfil.load(userInfo.avatar){
-                        error(R.drawable.ic_launcher_background)
+                    if(userInfo?.body()!!.avatar !=null){
+                        binding.imageProfil.load(userInfo?.body()!!.avatar){
+                            error(R.drawable.ic_launcher_background)
+                        }
                     }
+
                 }else{
                     binding.imageProfil.load("https://goo.gl/gEgYUd")
                 }

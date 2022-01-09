@@ -2,7 +2,6 @@ package com.nicoalex.todo.tasklist
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.*
-import kotlinx.serialization.json.*
 
 @Serializable
 data class Task(

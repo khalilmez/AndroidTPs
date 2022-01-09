@@ -3,15 +3,34 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_weight="1"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp">
 
     <TextView
         android:id="@+id/task_title"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:background="@android:color/holo_blue_bright" />
+        android:paddingBottom="5dp"
+        android:text="Hello"
+        android:textColor="#0E2EDF"
+        android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/task_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Hello"
+        android:textColor="#000000"
+        android:textSize="17sp" />
+</LinearLayout>
     <ImageButton
         android:id="@+id/taskDeleteButton"
         android:layout_width="wrap_content"

@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Patterns
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
@@ -19,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.modernstorage.mediastore.FileType
 import com.google.modernstorage.mediastore.MediaStoreRepository
 import com.google.modernstorage.mediastore.SharedPrimary
+import com.nicoalex.todo.MainActivity
 import com.nicoalex.todo.R
 import com.nicoalex.todo.databinding.ActivityFormBinding
 import com.nicoalex.todo.databinding.ActivityUserInfoBinding
@@ -32,14 +34,15 @@ import java.util.*
 
 class UserInfoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserInfoBinding
-    private val userWebService = Api.userWebService
     val mediaStore by lazy { MediaStoreRepository(this) }
     val viewModel = UserInfoViewModel()
 
     private val cameraLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { accepted ->
-            if (accepted) handleImage(photoUri);
-            else Snackbar.make(binding.root, "Échec!", Snackbar.LENGTH_LONG).show();
+            if (accepted)
+                handleImage(photoUri)
+            else
+                Snackbar.make(binding.root, "Échec!", Snackbar.LENGTH_LONG).show()
         }
     private val permissionAndCameraLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { results ->
         // pour simplifier on ne fait rien ici, il faudra que le user re-clique sur le bouton
@@ -73,20 +76,34 @@ class UserInfoActivity : AppCompatActivity() {
         }
 
         lifecycleScope.launch {
-            val userInfo = Api.userWebService.getInfo().body()!!
-            binding.imageView.load(userInfo.avatar) {
-                // affiche une image par défaut en cas d'erreur:
-                error(R.drawable.ic_launcher_background)
+            val userInfo = Api.userWebService.getInfo()
+            if(userInfo.isSuccessful){
+                binding.imageView.load(userInfo.body()!!.avatar) {
+                    error(R.drawable.ic_launcher_background)
+                }
+            }else{
+                binding.imageView.load(R.drawable.ic_launcher_background)
+            }
+        }
+
+        val intent = Intent(this,MainActivity::class.java)
+
+        binding.submitUserInfo.setOnClickListener{
+            if(isEmailValid(binding.email.text.toString()) && binding.email.text.toString().isNotEmpty() && binding.firstName.text.toString().isNotEmpty()
+                && binding.lastName.text.toString().isNotEmpty()){
+
+                lifecycleScope.launch {
+                    val userInfo = Api.userWebService.getInfo()
+                    if(userInfo.isSuccessful){
+                        viewModel.updateUserInfo(UserInfo(binding.email.text.toString(),binding.firstName.text.toString(),
+                            binding.lastName.text.toString(),userInfo.body()!!.avatar))
+                    }
+                    startActivity(intent)
+                }
             }
         }
 
     }
-
-    private val cameraPermissionLauncher =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()) { accepted ->
-            if (accepted) launchCamera()// lancer l'action souhaitée
-            else showExplanation();// afficher une explication
-        }
 
     private fun launchCameraWithPermission() {
         val camPermission = Manifest.permission.CAMERA
@@ -147,6 +164,23 @@ class UserInfoActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.refresh()
+        lifecycleScope.launch {
+            val userInfo = Api.userWebService.getInfo()
+            if(userInfo.isSuccessful){
+                binding.imageView.load(userInfo.body()!!.avatar) {
+                    // affiche une image par défaut en cas d'erreur:
+                    error(R.drawable.ic_launcher_background)
+                }
+                binding.email.setText(userInfo.body()!!.email)
+                binding.firstName.setText(userInfo.body()!!.firstName)
+                binding.lastName.setText(userInfo.body()!!.lastName)
+            }else{
+                binding.imageView.load(R.drawable.ic_launcher_background)
+            }
+        }
+    }
+    fun isEmailValid(email: CharSequence?): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
 }

@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
                     val userWebService = Api.userWebService
                     val response = userWebService.login(loginForm)
                     if(response.isSuccessful){
-                        Toast.makeText(context, "Bienvenue !"+response.body()!!.id, Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Bienvenue !", Toast.LENGTH_LONG).show()
                         PreferenceManager.getDefaultSharedPreferences(context   ).edit {
                             putString(SHARED_PREF_TOKEN_KEY, response.body()!!.id.toString())
                         }

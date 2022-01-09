@@ -24,8 +24,10 @@ class TaskListAdapter (/*private var taskList: List<Task>*/):
     inner class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textViewTitle =itemView.findViewById<TextView>(R.id.task_title)
+        val textViewDescription =itemView.findViewById<TextView>(R.id.task_description)
         fun bind(task: Task) {
-            textViewTitle.text = "Titre : " + task.title + if (!task.description.isEmpty()) "\nDescription : " + task.description else ""
+            textViewTitle.text = task.title
+            textViewDescription.text = if (!task.description.isEmpty()) task.description else ""
 
             itemView.findViewById<ImageButton>(R.id.taskDeleteButton).setOnClickListener {
                 onClickDelete(task)
@@ -45,13 +47,5 @@ class TaskListAdapter (/*private var taskList: List<Task>*/):
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-
-   /* override fun getItemCount(): Int {
-        return taskList.size
-    }*/
-
-  /*  public fun setTaskList(newTaskList: List<Task>){
-        this.taskList = newTaskList
-    }*/
 
 }

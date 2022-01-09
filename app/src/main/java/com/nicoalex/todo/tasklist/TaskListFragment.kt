@@ -32,12 +32,6 @@ import kotlinx.coroutines.flow.collect
 
 class TaskListFragment : Fragment() {
 
-    /*private val taskList = mutableListOf(
-        Task(id = "id_1", title = "Task 1", description = "description 1"),
-        Task(id = "id_2", title = "Task 2"),
-        Task(id = "id_3", title = "Task 3")
-    );*/
-
     private val adapter = TaskListAdapter()
 
     private val viewModel: TaskListViewModel by viewModels()
@@ -66,33 +60,27 @@ class TaskListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState);
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view);
-        //val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(activity);
         recyclerView.adapter = adapter;
         val addButton = view.findViewById<FloatingActionButton>(R.id.AddingTaskButton);
-        //val addButton = binding.AddingTaskButton
         addButton.setOnClickListener {
             formLauncher.launch(Intent(activity, FormActivity::class.java));
-        };
+        }
+
         adapter.onClickDelete = { task ->
             lifecycleScope.launch {
                 viewModel.delete(task)
             }
             adapter.notifyDataSetChanged();
-        };
+        }
 
         adapter.onModifyTask = { task ->
             val intent = Intent(activity, FormActivity::class.java)
             val bundle = Bundle()
             intent.putExtra("task", task)
             formLauncher.launch(intent)
-        }/*
-        lifecycleScope.launch {
-            tasksRepository.taskList.collect { newList->
-                adapter.setTaskList(newList)
-                adapter.notifyDataSetChanged()
-            }
-        }*/
+        }
+
         lifecycleScope.launch {
             viewModel.taskList.collect { newList ->
                 adapter.submitList(newList)
@@ -114,7 +102,6 @@ class TaskListFragment : Fragment() {
             SHARED_PREF_TOKEN_KEY, "")
         val token = getToken()
         if(token.toString().isEmpty() || token == "" || token == null){
-            //val intent = Intent(activity, AuthenticationActivity::class.java)
             val intent = Intent(activity, AuthenticationActivity::class.java)
             startActivity(intent)
         }

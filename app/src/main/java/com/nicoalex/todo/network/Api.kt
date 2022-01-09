@@ -14,8 +14,6 @@ object Api {
     // constantes qui serviront à faire les requêtes
     private const val BASE_URL = "https://android-tasks-api.herokuapp.com/api/"
 
-    //private const val TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1NjAsImV4cCI6MTY3MDMzODM4M30.JEvgX8QvdY1zC4615AFeIlnZDAwswJiSv-kBPxWwfO4"
-    private const val TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2NDgsImV4cCI6MTY3MzEwNTczNX0.Su4GF4n4Govi0dQMomBG3YKL-zGPP0gPVgGBrjIpORc"
     lateinit var appContext: Context
 
     // client HTTP

@@ -7,9 +7,7 @@ object TaskDiffCallback : DiffUtil.ItemCallback<Task>() {
         return oldItem.id == newItem.id
     }
 
-        // are they the same "entity" ? (usually same id)
     override fun areContentsTheSame(oldItem: Task, newItem: Task) : Boolean {
             return ((oldItem.description == newItem.description) && (oldItem.title == newItem.title))
     }
-    // do they have the same data ? (content)
 }

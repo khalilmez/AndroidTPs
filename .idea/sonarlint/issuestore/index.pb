@@ -1,5 +1,33 @@
 
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-d
-4app/src/main/java/com/nicoalex/todo/tasklist/Task.kt,f\a\fabfcff8a5e540addabcd438ae1f8ee11396df31
+Z
+*app/src/main/java/com/nicoalex/todo/App.kt,6\f\6fbd4829f6d7d62cbf195980dc1bbad0adbf27da
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+m
+=app/src/main/java/com/nicoalex/todo/network/TaskWebService.kt,4\5\455cefa08e71fa77c79fd06950d2ec3bbf9ed437
+r
+Bapp/src/main/java/com/nicoalex/todo/User/AuthenticationFragment.kt,c\b\cbad14f375076231c48447d83a6b570a5c61d703
+j
+:app/src/main/java/com/nicoalex/todo/User/SignUpResponse.kt,1\9\1924bcefddae6d835e45740b55eafb8d2c823ae3
+j
+:app/src/main/java/com/nicoalex/todo/User/SignupFragment.kt,1\2\1223e7c3eaadba206eff43aa6ac3341228a4ca85
+f
+6app/src/main/java/com/nicoalex/todo/User/SignUpForm.kt,0\3\0328ff85f1a50ec020f3ae3b9dcc2ad88a4997ce
+i
+9app/src/main/java/com/nicoalex/todo/User/LoginResponse.kt,3\4\34ec8599632fd2a0a56a54ef8cfcd96a15bddbf3
+e
+5app/src/main/java/com/nicoalex/todo/User/LoginForm.kt,5\6\5611f5963fdf6b63dba62b001ddf53d324cb1070
+r
+Bapp/src/main/java/com/nicoalex/todo/User/AuthenticationActivity.kt,5\f\5ffbd7f5675374dbe3e00ef8ec8813e1d6ba39bf
+g
+7app/src/main/java/com/nicoalex/todo/network/UserInfo.kt,2\0\205bf2fa725fae1530d3ff22b312dc60c9c7dc8c
+m
+=app/src/main/java/com/nicoalex/todo/User/UserInfoViewModel.kt,9\d\9d739a7814dff9eb7995e0f536943aa6a78d3212
+m
+=app/src/main/java/com/nicoalex/todo/network/UserWebService.kt,e\d\edf6d674b8e122d8dafb4e6527402f1722b31444
+n
+>app/src/main/java/com/nicoalex/todo/User/UserInfoRepository.kt,1\1\1111d09111a5fa679e30ca5a8a970ad16628f215

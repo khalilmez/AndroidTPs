@@ -23,4 +23,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Prendre une photo" />
+        <EditText
+            android:id="@+id/firstName"
+            android:hint="First Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    <EditText
+        android:id="@+id/lastName"
+        android:hint="Last Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/email"
+        android:hint="Email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        android:id="@+id/submit_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer"/>
     </LinearLayout>

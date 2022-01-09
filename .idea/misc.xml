@@ -3,15 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.14635416666666667" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
         <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_authentication.xml" value="0.16822916666666668" />
-        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_form.xml" value="0.264" />
-        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_user_info.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_form.xml" value="0.3255208333333333" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_main.xml" value="0.4687800192122959" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/activity_user_info.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/fragment_authentication.xml" value="0.16822916666666668" />
         <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/fragment_login.xml" value="0.16822916666666668" />
-        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/fragment_signup.xml" value="0.18229166666666666" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/fragment_signup.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/fragment_task_list.xml" value="0.21403508771929824" />
-        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/item_task.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/ToDoNicolasAlexandre/app/src/main/res/layout/item_task.xml" value="0.625503355704698" />
       </map>
     </option>
   </component>
